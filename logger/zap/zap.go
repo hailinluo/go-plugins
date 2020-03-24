@@ -108,6 +108,7 @@ func (l *zaplog) Error(err error) logger.Logger {
 
 func (l *zaplog) Log(level logger.Level, args ...interface{}) {
 	l.RLock()
+	fmt.Println("zap log")
 	data := make([]zap.Field, 0, len(l.fields))
 	for k, v := range l.fields {
 		data = append(data, zap.Any(k, v))
@@ -132,6 +133,7 @@ func (l *zaplog) Log(level logger.Level, args ...interface{}) {
 
 func (l *zaplog) Logf(level logger.Level, format string, args ...interface{}) {
 	l.RLock()
+	fmt.Println("zap logf")
 	data := make([]zap.Field, 0, len(l.fields))
 	for k, v := range l.fields {
 		data = append(data, zap.Any(k, v))
